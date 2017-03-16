@@ -32,7 +32,7 @@ ui <- tagList(tags$header(
                   "))),
   navbarPage(
     title = tags$header(
-      HTML('<a style="color: 	#FFA500" target  = "_blank" href="https://jangehlen.github.io/shinyOmics/">shinyOmics - Methylation</a>')),
+      HTML('<a style="color: 	#FFA500" target  = "_blank" href="https://github.com/GenoMixer/meth450K/">shinyMeth</a>')),
     
     windowTitle = "ShinyOmics - Meth",
     id = "meth",
