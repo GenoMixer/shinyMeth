@@ -44,6 +44,19 @@ table(keep)
 mSetFunFlt <- mSetFun[keep,]
 mSetSqFlt <- mSetSq[keep,]
 
+# exclude probes with a beadcount < 3
+RGSet_ex <- read.metharray.exp(targets=targets,extended=TRUE) # extended set
+beadcount <- beadcount(RGSet_ex)
+beadcount_NAs <- apply(beadcount, 1, function(z) sum(is.na(z)))
+failed_beads_probes <- beadcount[(beadcount_NAs > 2),]
+failed_beads_probes <- row.names(failed_beads_probes)
+length(failed_beads_probes)
+keep <- !(featureNames(mSetFunFlt) %in% failed_beads_probes)
+table(keep)
+mSetFunFlt <- mSetFunFlt[keep,]
+mSetFunFlt
+
+
 # remove probes on the sex chromosomes
 keep <- !(featureNames(mSetFunFlt) %in% annoEPIC$Name[annoEPIC$chr %in% c("chrX","chrY")])
 table(keep)
