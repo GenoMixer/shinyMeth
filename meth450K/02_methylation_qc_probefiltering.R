@@ -56,7 +56,6 @@ table(keep)
 mSetFunFlt <- mSetFunFlt[keep,]
 mSetFunFlt
 
-
 # remove probes on the sex chromosomes
 keep <- !(featureNames(mSetFunFlt) %in% annoEPIC$Name[annoEPIC$chr %in% c("chrX","chrY")])
 table(keep)
